@@ -8,9 +8,10 @@ Link to h2 database: http://localhost:8080/h2-console
 <br>
 How it looks in swagger:
 <br>
-![](./example.png)
 
-<b> PUT /turn-on-off </b> - turn on or turn off the machine. The machine can't work if it's turned off.
+<img width="683" alt="example" src="https://user-images.githubusercontent.com/54900460/147646020-e0939ce6-7c6b-4e45-932f-8682c5eb7887.png">
+<b> PUT /turn-on-off </b> 
+- turn on or turn off the machine. The machine can't work if it's turned off.
 <br>
 <br>
 <b> GET /start </b> - start chosen program.
