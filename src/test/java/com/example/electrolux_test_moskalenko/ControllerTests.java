@@ -4,7 +4,7 @@ import com.example.electrolux_test_moskalenko.model.machine.ActiveStatus;
 import com.example.electrolux_test_moskalenko.model.machine.WashingMachine;
 import com.example.electrolux_test_moskalenko.model.program.ProgramType;
 import com.example.electrolux_test_moskalenko.service.WashingProgramsService;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -29,7 +29,7 @@ class ControllerTests {
     @Autowired
     private MockMvc mockMvc;
 
-    @Before
+    @BeforeEach
     void setOnStatus() {
         washingMachine.setMachineStatus(ActiveStatus.ON);
     }
@@ -81,6 +81,14 @@ class ControllerTests {
         mockMvc.perform(
                         post("/delay-start").param("localTime", "12:566"))
                 .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void startTest() throws Exception {
+        washingMachine.setChosenProgram(washingProgramsService.getProgramBuilder(ProgramType.QUICK));
+        mockMvc.perform(
+                        get("/start"))
+                .andExpect(status().isOk());
     }
 
 }
